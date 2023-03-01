@@ -1,0 +1,26 @@
+<h1>Students#index</h1>
+<p>Find me in app/views/students/index.html.erb</p>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Progreso Medio</th>
+      <th>Nota media</th>
+      <th>Graduado</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.email %></td>
+        <td>XXX</td>
+        <td>XXX</td>
+        <td>XXX</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
