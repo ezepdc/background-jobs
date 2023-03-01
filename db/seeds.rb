@@ -6,6 +6,8 @@ Enrollment.destroy_all
 
 puts "Creating..."
 
+# USERS
+
 admin_user = User.create(
   name: "Admin User",
   email: "admin.user@not_mail.com",
@@ -48,3 +50,36 @@ user = User.create(
   password: "123456"
 )
 puts "User with id: #{user.id} has been created"
+
+
+# COURSES
+
+course = Course.create(
+  title: "Design 488",
+  user: admin_user
+)
+puts "Course with id: #{course.id} has been created"
+
+course = Course.create(
+  title: "Criminology 425",
+  user: admin_user
+)
+puts "Course with id: #{course.id} has been created"
+
+course = Course.create(
+  title: "Computer Science 235",
+  user: admin_user
+)
+puts "Course with id: #{course.id} has been created"
+
+course = Course.create(
+  title: "Creative Arts 297",
+  user: admin_user
+)
+puts "Course with id: #{course.id} has been created"
+
+course = Course.create(
+  title: "Applied Science (Psychology) 543",
+  user: admin_user
+)
+puts "Course with id: #{course.id} has been created"
