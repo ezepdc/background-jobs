@@ -15,4 +15,6 @@ Rails.application.routes.draw do
       post 'upload_csv'
     end
   end
+
+  get '/export_students_csv', to: 'students#export_students_csv'
 end

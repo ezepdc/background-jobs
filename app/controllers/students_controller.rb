@@ -30,4 +30,12 @@ class StudentsController < ApplicationController
     end
     redirect_to root_path, alert: 'CSV file was successfully uploaded.'
   end
+
+  def export_students_csv
+    @students = User.where(student: true).select(:email, :name, :avg_score, :avg_progress, :graduate)
+
+    respond_to do |format|
+      format.csv { send_data User.to_csv, filename: "students-#{Date.today}.csv" }
+    end
+  end
 end
