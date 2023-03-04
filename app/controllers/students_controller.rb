@@ -1,7 +1,9 @@
+require 'csv'
+
 class StudentsController < ApplicationController
   def index
     @students = User.where(student: true)
-    @last_update = Enrollment.last.updated_at
+    @last_update = Enrollment.order(updated_at: :desc).first.updated_at
   end
 
   def calculations
@@ -12,5 +14,20 @@ class StudentsController < ApplicationController
     else
       redirect_to root_path, alert: 'You must be an admin to view this page.'
     end
+  end
+
+  def upload_csv
+    csv_file = params[:file]
+    headers = ['course_id', 'user_id', 'pass_score', 'progress', 'score']
+    CSV.foreach(csv_file.path, headers: headers) do |row|
+      Enrollment.create!(
+        course_id: row[1],
+        user: User.find(row[2]),
+        pass_score: row[3],
+        progress: row[4],
+        score: row[5]
+      )
+    end
+    redirect_to root_path, alert: 'CSV file was successfully uploaded.'
   end
 end
