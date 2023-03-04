@@ -24,3 +24,15 @@
     <% end %>
   </tbody>
 </table>
+
+
+<% if current_user&.admin? %>
+  <h1>Calculation results</h1>
+  <% if @total_score.present? %>
+    <p>Total score of all products: <%= @total_score %></p>
+  <% else %>
+    <p>Calculation in progress...</p>
+  <% end %>
+<% else %>
+  <p>You must be an admin to view this page.</p>
+<% end %>
