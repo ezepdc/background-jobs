@@ -1,32 +1,38 @@
-<h1>Alumnos</h1>
-<p>Ultima actualización <%= @last_update %></p>
+<div class="container mt-3">
+  <h1>Alumnos</h1>
+  <p>Ultima actualización <%= @last_update %></p>
 
-  <%= link_to "Calcular", students_calculations_path, class: "btn btn-dark" %>
+  <%= link_to "Calcular", students_calculations_path, class: "btn btn-dark mb-3" %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Email</th>
-      <th>Progreso Medio</th>
-      <th>Nota media</th>
-      <th>Graduado en la plataforma</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @students.each do |student| %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= student.name %></td>
-        <td><%= student.email %></td>
-        <td><%= student.avg_progress.present? ? student.avg_progress : "Sin progreso" %></td>
-        <td><%= student.avg_score.present? ? student.avg_score : "Sin notas"%></td>
-        <td><%= student.graduate ? "Si" : "No" %></td>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Progreso Medio</th>
+        <th>Nota media</th>
+        <th>Graduado en la plataforma</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @students.each do |student| %>
+        <tr>
+          <td><%= student.name %></td>
+          <td><%= student.email %></td>
+          <td><%= student.avg_progress.present? ? student.avg_progress : "Sin progreso" %></td>
+          <td><%= student.avg_score.present? ? student.avg_score : "Sin notas"%></td>
+          <td><%= student.graduate ? "Si" : "No" %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 
-<%= form_tag upload_csv_students_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag 'Upload CSV' %>
-<% end %>
+  <%= form_tag upload_csv_students_path, multipart: true, class: "mb-3" do %>
+    <div class="input-group">
+      <%= file_field_tag :file, class: "form-control" %>
+      <div class="input-group-append">
+        <%= submit_tag 'Upload CSV', class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
