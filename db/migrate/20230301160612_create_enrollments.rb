@@ -4,8 +4,8 @@ class CreateEnrollments < ActiveRecord::Migration[7.0]
       t.integer :pass_score
       t.integer :progress
       t.integer :score
-      t.string :completed
-      t.string :graduate
+      t.boolean :completed, null: false, default: false
+      t.boolean :graduate,  null: false, default: false
       t.references :course, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
 

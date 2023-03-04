@@ -26,8 +26,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_202151) do
     t.integer "pass_score"
     t.integer "progress"
     t.integer "score"
-    t.string "completed"
-    t.string "graduate"
+    t.boolean "completed", default: false, null: false
+    t.boolean "graduate", default: false, null: false
     t.bigint "course_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false

@@ -2,13 +2,15 @@ class CalculationsJob < ApplicationJob
   queue_as :default
 
   def perform
-    puts "Starting calculations"
+    puts "***********Starting calculations************"
 
-    total_score = Enrollment.sum(:score) + 3
+    Enrollment.all.each do |e|
+      e.completed = e.progress == 100
+      e.graduate = e.completed && e.score > e.pass_score
+      e.save
+      puts "********* Progress: #{e.progress} Completed: #{e.completed} Gradaute: #{e.graduate}*********"
+    end
 
-    redis = Redis.new
-    redis.set('total_score', total_score)
-
-    puts "Calculations done, total score is #{total_score}"
+    puts "************Completed***********"
   end
 end
