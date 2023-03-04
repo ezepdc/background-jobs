@@ -1,6 +1,7 @@
-<h1>Students#index</h1>
-<p>Find me in app/views/students/index.html.erb</p>
+<h1>Alumnos</h1>
+<p>Ultima actaulización <%= @last_update %></p>
 
+  <%= link_to "Calcular", students_calculations_path, class: "btn btn-dark" %>
 
 <table>
   <thead>
@@ -17,10 +18,12 @@
       <tr>
         <td><%= student.name %></td>
         <td><%= student.email %></td>
-        <td><%= student.avg_progess %></td>
-        <td><%= student.avg_score %></td>
-        <td><%= student.graduate %></td>
+        <td><%= student.avg_progress.present? ? student.avg_progress : "Sin progreso" %></td>
+        <td><%= student.avg_score.present? ? student.avg_score.present : "Sin notas"%></td>
+        <td><%= student.graduate ? "Si" : "No" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+
