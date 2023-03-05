@@ -1,11 +1,19 @@
 <div class="container mt-3">
-  <h1>Alumnos</h1>
-   <%= link_to "Refrescar página", root_path, class: "btn btn-light mb-3" %>
-  <p>Ultima actualización <%= @last_update %></p>
+  <h1 class="mb-4">Alumnos</h1>
 
-  <%= link_to "Calcular", students_calculations_path, class: "btn btn-dark mb-3" %>
+  <div class="row mb-4">
+    <div class="col-sm-12 col-md-4">
+      <%= link_to "Refrescar página", root_path, class: "btn btn-light btn-block" %>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <p class="text-center">Última actualización <%= @last_update %></p>
+    </div>
+    <div class="col-sm-12 col-md-4">
+      <%= link_to "Calcular", students_calculations_path, class: "btn btn-dark btn-block" %>
+    </div>
+  </div>
 
-  <table class="table">
+  <table class="table table-hover">
     <thead>
       <tr>
         <th>Nombre</th>
@@ -27,16 +35,16 @@
       <% end %>
     </tbody>
   </table>
-  <%= link_to 'Descargar CSV', export_students_csv_path(format: :csv), class: 'btn btn-primary' %>
 
-<h2>Actualizar la información de los cursos de los usuarios </h2>
-  <%= form_tag upload_csv_students_path, multipart: true, class: "mb-3" do %>
+  <%= link_to 'Descargar CSV', export_students_csv_path(format: :csv), class: 'btn btn-primary mb-4' %>
+
+  <h2>Actualizar la información de los cursos de los usuarios</h2>
+  <%= form_tag upload_csv_students_path, multipart: true, class: "mb-4" do %>
     <div class="input-group">
       <%= file_field_tag :file, class: "form-control" %>
       <div class="input-group-append">
-        <%= submit_tag 'Upload CSV', class: "btn btn-primary" %>
+        <%= submit_tag 'Cargar CSV', class: "btn btn-primary" %>
       </div>
     </div>
   <% end %>
-
 </div>
