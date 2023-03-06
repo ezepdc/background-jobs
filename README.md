@@ -49,7 +49,7 @@ Luego de 10 segundos refresque la página para visualizar los cálculos con el b
 
 ## Descargar los resultados.
 Una vez realizados los calculos se pueden descargar los mismos en formato CSV haciendo clic en el botón <br />
-**Descargar**
+**Descargar cálculos**
 
 ## Notas
 La implementación actual no considera los IDs de los archivos CSV, por lo que si se agrega un nuevo archivo enrollments.csv con nuevos datos, no funcionará.
