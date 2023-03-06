@@ -57,7 +57,8 @@ La implementación actual no considera los IDs de los archivos CSV, por lo que s
 Para una funcionalidad de tal tipo se debe modificar el código.
 
 ## Volver a ejecutar la solución
-Para volver a ejecutar la solución, seguir estos pasos:
+Para volver a ejecutar la solución, seguir estos pasos: <br />
+<br />
 Desde la terminal:
 
 1. Detener el servidor presionando Ctrl + C.
