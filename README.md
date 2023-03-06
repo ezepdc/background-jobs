@@ -28,7 +28,7 @@ sidekiq
 ## Iniciar sesión como administrador
 Para iniciar sesión como administrador, ir a http://localhost:3000/users/sign_in e ingresar las siguientes credenciales:
 
-*Usuario: admin.user@not_mail.com*
+*Usuario: admin.user@not_mail.com* <br />
 *Contraseña: 123456*
 
 ## Agregar estudiantes, cursos e inscripciones
@@ -39,14 +39,14 @@ Desde la pantalla actual
 3. Agregar el archivo enrollments.csv con los datos de las incscripciones.
 
 ## Ejecutar los cálculos
-Una vez agregados los estudiantes, cursos e inscripciones, se pueden ejecutar los cálculos cliqueando el botón
+Una vez agregados los estudiantes, cursos e inscripciones, se pueden ejecutar los cálculos cliqueando el botón <br />
 **Calcular**
 
-Luego de 10 segundos refresque la página para visualizar los cálculos con el botón
+Luego de 10 segundos refresque la página para visualizar los cálculos con el botón <br />
 **Refrescar página**
 
 ## Descargar los resultados.
-Una vez realizados los calculos se pueden descargar los mismos en formato CSV haciendo clic en el botón
+Una vez realizados los calculos se pueden descargar los mismos en formato CSV haciendo clic en el botón <br />
 **Descargar**
 
 ## Notas
@@ -64,4 +64,5 @@ Desde la terminal:
     ```
     rails db:drop db:create db:migrate db:seed
     ```
-4. Puede repetir los pasos desde el apartado ***Iniciar el servidor y Sidekiq***
+4. Puede repetir los pasos desde el apartado [***Iniciar el servidor y Sidekiq***]
+(https://github.com/ezepdc/background-jobs#iniciar-el-servidor-y-sidekiq)
