@@ -2,28 +2,42 @@ class CalculationsJob < ApplicationJob
   queue_as :default
 
   def perform
-    puts "***********Starting calculations************"
+    puts "**********Starting calculations**********"
 
-    puts "***********Starting COURSES calculations************"
+    calculate_courses_enrollment
+    calculate_platforms_student
 
-    Enrollment.all.each do |e|
-      e.completed = e.progress == 100
-      e.graduate = e.completed && e.score > e.pass_score
-      e.save
-      puts "********* Progress: #{e.progress} Completed: #{e.completed} Gradaute: #{e.graduate}*********"
+    puts "**********Completed**********"
+  end
+
+  private
+
+  def calculate_courses_enrollment
+    puts "**********Starting COURSES calculations**********"
+
+    Enrollment.all.each do |enrollment|
+      enrollment.completed = enrollment.progress == 100
+      enrollment.graduate = enrollment.completed && enrollment.score > enrollment.pass_score
+      enrollment.save
+
+      puts "********** Progress: #{enrollment.progress} Completed: #{enrollment.completed} Gradaute: #{enrollment.graduate} **********"
     end
+  end
 
-    puts "***********Starting PLATFORMS calculations************"
+  def calculate_platforms_student
+    puts "**********Starting PLATFORMS calculations**********"
 
-    User.all.each do |u|
-      u.avg_score = Enrollment.where(user: u.id).average(:score)
-      u.avg_progress = Enrollment.where(user: u.id).average(:progress)
-      enrollments = Enrollment.where(user: u.id)
-      u.graduate = enrollments.present? ? enrollments.pluck(:graduate).all? : false
-      u.save
-      puts "****** User #{u.id} #{u.name} Average Score: #{u.avg_score} Average Progress #{u.avg_progress} Graduate #{u.graduate}*****"
+    Student.all.each do |student|
+      student.avg_score = Enrollment.where(student_id: student.id).average(:score)
+      student.avg_progress = Enrollment.where(student_id: student.id).average(:progress)
+
+      enrollments = Enrollment.where(student_id: student.id)
+      student.graduate = enrollments.present? ? enrollments.pluck(:graduate).all? : false
+
+      student.last_calculation = Time.now
+      student.save
+
+      puts "********** Student #{student.id} #{student.name} Average Score: #{student.avg_score} Average Progress #{student.avg_progress} Graduate #{student.graduate} **********"
     end
-
-    puts "************Completed***********"
   end
 end
