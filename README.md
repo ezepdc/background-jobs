@@ -8,14 +8,14 @@ git clone https://github.com/ezepdc/background-jobs.git
 ```
 
 ## Migrar base de datos y crear usuario administrador
-En la terminal, ejecutar el siguiente comando:
+En la terminal, navegar hasta la carpeta del proyecto y ejecutar los siguientes comandos:
 
 ```
 rails db:migrate db:seed
 ```
 
 ## Iniciar el servidor y Sidekiq
-En la terminal, navegar hasta la carpeta del proyecto y ejecutar los siguientes comandos:
+En la terminal, ejecutar el siguiente comando:
 
 ```
 rails s
