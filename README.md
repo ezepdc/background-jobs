@@ -64,4 +64,4 @@ Desde la terminal:
     ```
     rails db:drop db:create db:migrate db:seed
     ```
-4. Puede repetir los pasos desde el apartado [***Iniciar el servidor y Sidekiq***] (https://github.com/ezepdc/background-jobs#iniciar-el-servidor-y-sidekiq)
+4. Puede repetir los pasos desde el apartado ***Iniciar el servidor y Sidekiq***
