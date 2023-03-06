@@ -11,7 +11,7 @@ git clone https://github.com/ezepdc/background-jobs.git
 En la terminal, navegar hasta la carpeta del proyecto y ejecutar los siguientes comandos:
 
 ```
-rails db:migrate db:seed
+rails db:drop db:create db:migrate db:seed
 ```
 
 ## Iniciar el servidor y Sidekiq
