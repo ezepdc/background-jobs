@@ -1,49 +1,70 @@
-<div class="container mt-3">
-  <h1 class="mb-4">Alumnos</h1>
+<h1 class="mb-4">Alumnos</h1>
 
-  <div class="row mb-4">
-    <div class="col-sm-12 col-md-4">
-      <%= link_to "Refrescar página", root_path, class: "btn btn-light btn-block" %>
-    </div>
-    <div class="col-sm-12 col-md-4">
-      <p class="text-center">Última actualización <%= @last_update %></p>
-    </div>
-    <div class="col-sm-12 col-md-4">
-      <%= link_to "Calcular", students_calculations_path, class: "btn btn-dark btn-block" %>
-    </div>
+<div class="row mb-4">
+  <div class="col-sm-12 col-md-4 text-center">
+    <p>Última actualización:</p>
+    <p><%= @last_update.present? ? @last_update : "Sin cálculos realizados" %></p>
   </div>
+  <div class="col-sm-12 col-md-4">
+    <%= link_to "Calcular", students_calculations_path, class: "btn btn-dark" %>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <%= link_to "Refrescar página", root_path, class: "btn btn-secondary" %>
+  </div>
+</div>
 
-  <table class="table table-hover">
-    <thead>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Progreso Medio</th>
+      <th>Nota media</th>
+      <th>Graduado en la plataforma</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
       <tr>
-        <th>Nombre</th>
-        <th>Email</th>
-        <th>Progreso Medio</th>
-        <th>Nota media</th>
-        <th>Graduado en la plataforma</th>
+        <td><%= student.name %></td>
+        <td><%= student.email %></td>
+        <td><%= student.avg_progress.present? ? student.avg_progress : "Sin progreso" %></td>
+        <td><%= student.avg_score.present? ? student.avg_score : "Sin notas"%></td>
+        <td><%= student.graduate ? "Si" : "No" %></td>
       </tr>
-    </thead>
-    <tbody>
-      <% @students.each do |student| %>
-        <tr>
-          <td><%= student.name %></td>
-          <td><%= student.email %></td>
-          <td><%= student.avg_progress.present? ? student.avg_progress : "Sin progreso" %></td>
-          <td><%= student.avg_score.present? ? student.avg_score : "Sin notas"%></td>
-          <td><%= student.graduate ? "Si" : "No" %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+    <% end %>
+  </tbody>
+</table>
 
-  <%= link_to 'Descargar CSV', export_students_csv_path(format: :csv), class: 'btn btn-primary mb-4' %>
+<%= link_to 'Descargar CSV', export_students_csv_path(format: :csv), class: 'btn btn-primary mb-4' %>
 
-  <h2>Actualizar la información de los cursos de los usuarios</h2>
-  <%= form_tag upload_csv_students_path, multipart: true, class: "mb-4" do %>
+<div class="col-sm-12 col-md-6">
+  <h2>Agregar estudiantes</h2>
+  <%= form_tag upload_students_students_path, multipart: true, class: "mb-4" do %>
     <div class="input-group">
       <%= file_field_tag :file, class: "form-control" %>
       <div class="input-group-append">
-        <%= submit_tag 'Cargar CSV', class: "btn btn-primary" %>
+        <%= submit_tag 'Agregar CSV', class: "btn btn-primary" %>
+        </div>
+    </div>
+  <% end %>
+
+  <h2>Agregar cursos</h2>
+  <%= form_tag upload_courses_students_path, multipart: true, class: "mb-4" do %>
+    <div class="input-group">
+      <%= file_field_tag :file, class: "form-control" %>
+      <div class="input-group-append">
+        <%= submit_tag 'Agregar CSV', class: "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+
+  <h2>Agregar inscripciones</h2>
+  <%= form_tag upload_enrollments_students_path, multipart: true, class: "mb-4" do %>
+    <div class="input-group">
+      <%= file_field_tag :file, class: "form-control" %>
+      <div class="input-group-append">
+        <%= submit_tag 'Agregar CSV', class: "btn btn-primary" %>
       </div>
     </div>
   <% end %>
