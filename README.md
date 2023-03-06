@@ -15,12 +15,14 @@ rails db:drop db:create db:migrate db:seed
 ```
 
 ## Iniciar el servidor y Sidekiq
-En la terminal, ejecutar el siguiente comando:
+En la terminal, ejecutar los siguientes comandos:
 
+Ventana 1
 ```
 rails s
 ```
 
+Ventana 2
 ```
 sidekiq
 ```
