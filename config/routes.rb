@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   resources :students do
     collection do
-      post 'upload_csv'
+      post 'upload_students'
+      post 'upload_courses'
+      post 'upload_enrollments'
     end
   end
 
