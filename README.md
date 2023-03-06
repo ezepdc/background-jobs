@@ -28,7 +28,7 @@ sidekiq
 ```
 
 ## Iniciar sesión como administrador
-Para iniciar sesión como administrador, ir a http://localhost:3000/users/sign_in e ingresar las siguientes credenciales:
+Para iniciar sesión como administrador, ir a http://localhost:3000 e ingresar las siguientes credenciales:
 
 *Usuario: admin.user@not_mail.com* <br />
 *Contraseña: 123456*
